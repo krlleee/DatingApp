@@ -61,6 +61,7 @@ namespace WebApplication2.Controllers
                 return Unauthorized();
             }
 
+            //gradimo token
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),

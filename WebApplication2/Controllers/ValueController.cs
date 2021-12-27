@@ -20,8 +20,8 @@ namespace WebApplication2.Controllers
         {
             _context = context;
         }
-       
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
