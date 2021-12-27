@@ -26,9 +26,9 @@ namespace WebApplication2.Data
                 return null;
             }
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) ;
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) { } 
 
-            return user;
+            return null;
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
