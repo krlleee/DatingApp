@@ -27,11 +27,25 @@
                 "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"
               },
               {
+                "input": "./node_modules/bootswatch/dist/sketchy/bootstrap.min.css"
+              },
+              {
                 "input": "./node_modules/font-awesome/css/font-awesome.min.css"
               },
+              {
+                "input": "./node_modules/alertifyjs/build/css/alertify.min.css"
+              },
+              {
+                "input": "./node_modules/alertifyjs/build/css/themes/bootstrap.min.css"
+              },
+              
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "./node_modules/alertifyjs/build/alertify.min.js"
+              }
+            ]
           },
           "configurations": {
             "production": {

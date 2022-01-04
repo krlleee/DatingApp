@@ -22,13 +22,14 @@ namespace WebApplication2.Data
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
 
             if(user==null)
-            {
+           
                 return null;
-            }
+           
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) { } 
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
 
-            return null;
+            return user;
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
