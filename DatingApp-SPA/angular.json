@@ -27,7 +27,7 @@
                 "input": "./node_modules/bootstrap/dist/css/bootstrap.min.css"
               },
               {
-                "input": "./node_modules/bootswatch/dist/sketchy/bootstrap.min.css"
+                "input": "./node_modules/bootswatch/dist/journal/bootstrap.min.css"
               },
               {
                 "input": "./node_modules/font-awesome/css/font-awesome.min.css"
