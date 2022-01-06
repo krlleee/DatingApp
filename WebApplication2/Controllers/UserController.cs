@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApplication2.Data;
 using WebApplication2.Dtos;
@@ -13,12 +14,12 @@ namespace WebApplication2.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController:ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
 
-        public UserController(IDatingRepository repo,IMapper mapper)
+        public UserController(IDatingRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
@@ -34,9 +35,9 @@ namespace WebApplication2.Controllers
             {
                 foreach (var us in users)
                 {
-                    if(us.Id==u.Id)
+                    if (us.Id == u.Id)
                     {
-                        if(DateTime.Now.Month>us.DateOfBirth.Month)
+                        if (DateTime.Now.Month > us.DateOfBirth.Month)
                         {
 
                             u.Age = DateTime.Now.Year - us.DateOfBirth.Year;
@@ -52,9 +53,9 @@ namespace WebApplication2.Controllers
                                 u.Age = DateTime.Now.Year - us.DateOfBirth.Year - 1;
                             }
                         }
-                        
+
                     }
-                    
+
                 }
             }
 
@@ -84,8 +85,30 @@ namespace WebApplication2.Controllers
                 }
             }
 
-            
+
             return Ok(userToReturn);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id,UserForUpdateDto userForUpdateDto)
+        {
+            //proveravamo da li user koji je ulogovan pokusava da pristupi ruti i odradi put
+            //proveravamo id koji je prosledjen sa tokenom
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFromRepo = await _repo.GetUser(id);
+
+            _mapper.Map(userForUpdateDto, userFromRepo);
+
+            if(await _repo.SaveAll())
+            {
+                return NoContent();
+            }
+
+            throw new Exception($"Updating user with id: {id} failed on save");
+
+
         }
 
         

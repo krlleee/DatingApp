@@ -24,6 +24,9 @@ import { MemberCardsComponent } from './members/member-cards/member-cards.compon
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditsComponent } from './members/member-edits/member-edits.component';
+import { MemberEditsResolver } from './_resolvers/member-edits.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
 
 export function tokenGetter(){
@@ -41,7 +44,8 @@ export function tokenGetter(){
       ListsComponent,
       MessagesComponent,
       MemberCardsComponent,
-      MemberDetailComponent
+      MemberDetailComponent,
+      MemberEditsComponent
    ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ export function tokenGetter(){
     AuthGuard,
     UserService,
     MemberDetailResolver,
-    MemberListResolver
+    MemberListResolver,
+    MemberEditsResolver,
+    PreventUnsavedChanges
   ],
   bootstrap: [AppComponent]
 })
