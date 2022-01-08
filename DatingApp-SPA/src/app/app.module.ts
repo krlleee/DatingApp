@@ -6,6 +6,7 @@ import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -27,6 +28,8 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditsComponent } from './members/member-edits/member-edits.component';
 import { MemberEditsResolver } from './_resolvers/member-edits.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+
 
 
 export function tokenGetter(){
@@ -36,7 +39,6 @@ export function tokenGetter(){
 @NgModule({
   declarations: [							
     AppComponent,
-      
       NavComponent,
       HomeComponent,
       RegisterComponent,
@@ -45,7 +47,8 @@ export function tokenGetter(){
       MessagesComponent,
       MemberCardsComponent,
       MemberDetailComponent,
-      MemberEditsComponent
+      MemberEditsComponent,
+      PhotoEditorComponent
    ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ export function tokenGetter(){
     //appRoutes je fajl u kome smo definisali rute
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
+    FileUploadModule,
     JwtModule.forRoot({
       config:{
         tokenGetter:tokenGetter,

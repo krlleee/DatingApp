@@ -92,7 +92,7 @@ namespace WebApplication2.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id,UserForUpdateDto userForUpdateDto)
         {
-            //proveravamo da li user koji je ulogovan pokusava da pristupi ruti i odradi put
+            //proveravamo da li user koji je ulogovan pokusava da pristupi ruti i odradi put zahtev
             //proveravamo id koji je prosledjen sa tokenom
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();

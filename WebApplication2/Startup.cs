@@ -50,6 +50,7 @@ namespace WebApplication2
                 });
 
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
 
             services.AddTransient<Seed>();
