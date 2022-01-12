@@ -8,9 +8,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApplication2.Data;
 using WebApplication2.Dtos;
+using WebApplication2.Helpers;
 
 namespace WebApplication2.Controllers
 {
+    //osvezavamo last activ (u klasi helpers loguseractivity) kada god se uradi bilo koja metoda u ovom kontroleru
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
