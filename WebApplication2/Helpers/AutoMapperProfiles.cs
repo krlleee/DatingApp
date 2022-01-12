@@ -28,6 +28,8 @@ namespace WebApplication2.Helpers
             CreateMap<Photo, PhotoForReturnDto>();
 
             CreateMap<PhotoForCreationDto, Photo>();
+
+            CreateMap<UserForRegisterDto, User>();
         }
     }
 }
