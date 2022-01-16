@@ -20,6 +20,8 @@ namespace WebApplication2.Models
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public ICollection<Like>  Likers { get; set; }
+        public ICollection<Like> Likees { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
     }
